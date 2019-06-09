@@ -54,16 +54,16 @@ public class ParkingService {
 
     public void getRegistrationNumbersFromColor(String registrationNumber){
         if(parkingLot.isLotInitialized()){
-            List<String> registrationList = parkingLot.getRegistrationNumbersFromColor(registrationNumber);
-            if(registrationList.size() > 0) {
+            List registrationList = parkingLot.getRegistrationNumbersFromColor(registrationNumber);
+            if(registrationList == null || registrationList.size() == 0){
+                System.out.println(GoJekConstants.NOT_FOUND);
+            }
+            else {
                 int index;
                 for (index = 0; index < registrationList.size() - 1; index++)
                     System.out.print(registrationList.get(index) + ", ");
 
                 System.out.println(registrationList.get(index));
-            }
-            else{
-                System.out.println(GoJekConstants.NOT_FOUND);
             }
 
         }else{
@@ -105,16 +105,16 @@ public class ParkingService {
 
     public void getSlotNumbersFromColor(String color){
         if(parkingLot.isLotInitialized()){
-            List<Integer> slots = parkingLot.getSlotNumbersFromColor(color);
-            if(slots.size() > 0){
+            List slots = parkingLot.getSlotNumbersFromColor(color);
+            if(slots == null || slots.size() == 0){
+                System.out.println(GoJekConstants.NOT_FOUND);
+            }
+            else{
                int i = 0;
                 for (i = 0; i < slots.size() - 1; i++) {
                     System.out.print(slots.get(i) + ", ");
                 }
                 System.out.println(slots.get(i));
-            }
-            else{
-                System.out.println(GoJekConstants.NOT_FOUND);
             }
         }
         else

@@ -53,6 +53,9 @@ public class ParkingLot {
            return LeaveEnum.LEAVE_LOT_EMPTY;
     }
     public List getRegistrationNumbersFromColor(String color){
+        if(colorRegistrationMapping == null){
+            return null;
+        }
         return colorRegistrationMapping.get(color);
     }
 
@@ -88,7 +91,10 @@ public class ParkingLot {
     public List getSlotNumbersFromColor(String color){
         List<Integer> slots = new ArrayList<Integer>();
 
-        if(colorRegistrationMapping.get(color) != null){
+        if(colorRegistrationMapping == null){
+            return null;
+        }
+        else if(colorRegistrationMapping.get(color) != null){
             ArrayList<String> registrationList = colorRegistrationMapping.get(color);
 
             for (int i = 0; i < registrationList.size(); i++) {
@@ -103,11 +109,12 @@ public class ParkingLot {
         }
     }
 
-    public Integer getSlotNumberFromRegistrationNumber(String registrationNumber) {
-        if(slotRegistrationMapping.get(registrationNumber) != null){
-            return slotRegistrationMapping.get(registrationNumber);
-        }else{
+    public int getSlotNumberFromRegistrationNumber(String registrationNumber) {
+        if(slotRegistrationMapping == null || slotRegistrationMapping.get(registrationNumber) == null){
             return -1;
+        }
+        else{
+            return slotRegistrationMapping.get(registrationNumber);
         }
     }
 
