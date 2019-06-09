@@ -1,0 +1,11 @@
+/build/
+*.class
+*.jar
+.DS_Store
+.svn
+.Spotlight-V100
+.Trashes
+/.idea/
+.classpath
+.settings/
+/target/
