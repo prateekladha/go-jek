@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class ParkingLotTest {
+public class CarParkTests {
 
     private ParkingLot parkingLot;
 
@@ -24,7 +24,8 @@ public class ParkingLotTest {
     @Test
     public void test_ParkCar(){
         parkingLot.createParkingLot(10);
-        parkingLot.park("Reg No 1", "White");
+        int slotNumber = parkingLot.park("Reg No 1", "White");
+        assertEquals(slotNumber, 1);
         assertEquals(parkingLot.getAvailableSlotsCount(), 9);
     }
 
