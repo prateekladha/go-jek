@@ -18,6 +18,10 @@ public class Parser {
         parkingService = new ParkingService();
     }
 
+    /**
+     * Function to be called in case of Interactive mode
+     * @param text
+     */
     public void parseText(String text){
         String[] textData = text.split(" ");
 
@@ -66,6 +70,10 @@ public class Parser {
         }
     }
 
+    /**
+     * Function to be called in case of File mode
+     * @param filePath
+     */
     public void parseFile(String filePath){
         File file = new File(filePath);
         try {

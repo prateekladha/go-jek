@@ -20,6 +20,10 @@ public class InputCommandParser {
         }
     }
 
+    /**
+     * Populate all possible commands in map
+     * @throws NoSuchMethodException
+     */
     private void populateDataInMap() throws NoSuchMethodException {
         mapParser.put("create_parking_lot", ParkingService.class.getMethod("createParkingLot", String.class));
         mapParser.put("park", ParkingService.class.getMethod("park", String.class, String.class));

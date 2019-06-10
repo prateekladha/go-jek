@@ -16,6 +16,8 @@ public class GoJekApplication {
 
         switch (args.length){
             case 0:
+
+                // Interactive mode
                 System.out.println("Enter 'exit' to quit");
 
                 while(true){
@@ -39,6 +41,7 @@ public class GoJekApplication {
 
                 break;
             case 1:
+                // File mode
                 parser.parseFile(args[0]);
                 break;
             default:

@@ -15,6 +15,10 @@ public class ParkingLot {
     Map<String, Integer> slotRegistrationMapping;
     Map<String, ArrayList<String>> colorRegistrationMapping;
 
+    /**
+     * Function to create Parking lot
+     * @param countLots
+     */
     public void createParkingLot(int countLots){
         this.NUMBER_OF_LOTS = countLots;
 
@@ -28,6 +32,11 @@ public class ParkingLot {
         this.slotRegistrationMapping = new HashMap<String, Integer>();
     }
 
+    /**
+     * Function to handle scenario when user leave from Parking lot
+     * @param slotNumber
+     * @return
+     */
     public LeaveEnum leave(int slotNumber){
        if(this.slotCarMapping.size() > 0) {
 
@@ -52,6 +61,12 @@ public class ParkingLot {
        else
            return LeaveEnum.LEAVE_LOT_EMPTY;
     }
+
+    /**
+     * Function to get all registration numbers of car of a particular color
+     * @param color
+     * @return
+     */
     public List getRegistrationNumbersFromColor(String color){
         if(colorRegistrationMapping == null){
             return null;
@@ -59,6 +74,12 @@ public class ParkingLot {
         return colorRegistrationMapping.get(color);
     }
 
+    /**
+     * Function handle scenario when user enters in parking lot
+     * @param registrationNumber
+     * @param color
+     * @return
+     */
     public int park(String registrationNumber, String color){
 
         Collections.sort(availableSlots);
@@ -84,10 +105,19 @@ public class ParkingLot {
 
     }
 
+    /**
+     * To get current status of parking lot
+     * @return
+     */
     public Map status(){
         return slotCarMapping;
     }
 
+    /**
+     * Function to get all slot numbers on which car of particular color parked
+     * @param color
+     * @return
+     */
     public List getSlotNumbersFromColor(String color){
         List<Integer> slots = new ArrayList<Integer>();
 
@@ -109,6 +139,11 @@ public class ParkingLot {
         }
     }
 
+    /**
+     * Function to get slot number of a car with given registration number
+     * @param registrationNumber
+     * @return
+     */
     public int getSlotNumberFromRegistrationNumber(String registrationNumber) {
         if(slotRegistrationMapping == null || slotRegistrationMapping.get(registrationNumber) == null){
             return -1;
@@ -118,14 +153,26 @@ public class ParkingLot {
         }
     }
 
+    /**
+     * Function to get count of total slots
+     * @return
+     */
     public int getNUMBEROFLOTS(){
         return this.NUMBER_OF_LOTS;
     }
 
+    /**
+     * Function to get count of available slots
+     * @return
+     */
     public int getAvailableSlotsCount(){
         return this.availableSlots.size();
     }
 
+    /**
+     * To check if parking lot is initialized or not
+     * @return
+     */
     public boolean isLotInitialized(){
         if(this.NUMBER_OF_LOTS == 0){
             return false;
